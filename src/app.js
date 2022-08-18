@@ -17,9 +17,7 @@ app.use(express.json());
 
 app.get("/covid", async (req, res) => {
   const data = await fetchCovidData();
-  res.json({
-    message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
-  });
+  res.json(data);
 });
 
 app.use(middlewares.notFound);

@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 
 async function fetchCovidData() {
-  const browser = await puppeteer.launch({ headless: false }); // démarre une instance de Chromium
+  const browser = await puppeteer.launch({ headless: true }); // démarre une instance de Chromium
   const page = await browser.newPage();
   await page.goto("https://www.coronatracker.com/fr/analytics/");
 
@@ -24,8 +24,8 @@ async function fetchCovidData() {
     }
     return data;
   });
-  console.log(data);
   await browser.close();
+  return data;
 }
 
 module.exports = fetchCovidData;
