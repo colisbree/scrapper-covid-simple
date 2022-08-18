@@ -6,7 +6,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const middlewares = require("./middlewares");
-const api = require("./api");
+const fetchCovidData = require("./scrapper");
 
 const app = express();
 
@@ -15,7 +15,8 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/covid", async (req, res) => {
+  const data = await fetchCovidData();
   res.json({
     message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
   });
