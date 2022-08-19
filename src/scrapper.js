@@ -20,6 +20,24 @@ async function fetchCovidData() {
     for (const element of elements) {
       data.push({
         country: element.querySelector("a").text.trim(),
+        confirmed: parseInt(
+          element
+            .querySelector("td:nth-child(2)")
+            .textContent.trim()
+            .replace(/\s/g, "")
+        ),
+        recovered: parseInt(
+          element
+            .querySelector("td:nth-child(3)")
+            .textContent.trim()
+            .replace(/\s/g, "")
+        ),
+        deaths: parseInt(
+          element
+            .querySelector("td:nth-child(4)")
+            .textContent.trim()
+            .replace(/\s/g, "")
+        ),
       });
     }
     return data;
